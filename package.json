@@ -6,6 +6,8 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "vite --open",
+    "build:test": "vue-tsc && vite build --mode test",
+    "build:pro": "vue-tsc && vite build --mode production",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint src",
@@ -51,6 +53,7 @@
     "stylelint-scss": "^5.0.0",
     "typescript": "^4.6.4",
     "vite": "^3.1.0",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vue-tsc": "^0.40.4"
   }
 }

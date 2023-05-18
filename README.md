@@ -72,3 +72,98 @@
 # element-plus
 
         pnpm install element-plus @element-plus/icons-vue
+
+        import ElementPlus from 'element-plus';
+        import 'element-plus/dist/index.css'
+        //@ts-ignore忽略当前文件ts类型的检测否则有红色提示(打包会失败)
+        import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+        app.use(ElementPlus, {
+            locale: zhCn
+        })
+
+        //@ts-ignore 忽略当前文件ts类型的检测否则有红色提示(打包会失败)
+        import zhCn from 'element-plus/dist/locale/zh-cn.mjs' 
+
+        **Element Plus全局组件类型声明**
+        // tsconfig.json
+        {
+            "compilerOptions": {
+                // ...
+                "types": ["element-plus/global"]
+            }
+        }
+
+        src别名的配置
+        // vite.config.ts
+        import {defineConfig} from 'vite'
+        import vue from '@vitejs/plugin-vue'
+        import path from 'path'
+        export default defineConfig({
+            plugins: [vue()],
+            resolve: {
+                alias: {
+                    "@": path.resolve("./src") // 相对路径别名配置，使用 @ 代替 src
+                }
+            }
+        })
+
+        TypeScript 编译配置
+        // tsconfig.json
+        {
+            "compilerOptions": {
+                "baseUrl": "./", // 解析非相对模块的基地址，默认是当前目录
+                "paths": { //路径映射，相对于baseUrl
+                "@/*": ["src/*"] 
+                }
+            }
+        }
+
+        环境变量的配置
+        .env.development
+        .env.development
+        .env.test
+
+        "dev": "vite --open",
+        "build:test": "vue-tsc && vite build --mode test",
+        "build:pro": "vue-tsc && vite build --mode production",
+        "build": "vue-tsc --noEmit && vite build",
+        "preview": "vite preview",
+
+        SVG图标配置
+        pnpm install vite-plugin-svg-icons -D
+
+        import {defineConfig} from 'vite'
+        import vue from '@vitejs/plugin-vue'
+        import path from 'path'
+        import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+        export default defineConfig({
+            plugins: [
+            vue(),
+            createSvgIconsPlugin({
+                // Specify the icon folder to be cached
+                iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
+                // Specify symbolId format
+                symbolId: 'icon-[dir]-[name]',
+            }),
+            ],
+            resolve: {
+                alias: {
+                    "@": path.resolve("./src") // 相对路径别名配置，使用 @ 代替 src
+                }
+            }
+        })
+
+        **入口文件导入**
+        import 'virtual:svg-icons-register'
+
+        src/assets/icons
+
+        局部组件
+        SvgIcon/index.vue
+
+        全局组件
+        先 app.use
+        再 install()
+
+
+        集成sass

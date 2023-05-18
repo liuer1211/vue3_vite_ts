@@ -1,5 +1,8 @@
 <template>
-  <div>app</div>
+  <div>
+    app
+    <SvgIcon></SvgIcon>
+  </div>
 </template>
 <script setup lang="ts">
 var a = "123";
