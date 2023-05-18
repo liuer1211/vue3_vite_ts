@@ -8,6 +8,7 @@
     npm run build
 
 # 基础配置
+
         vite --open  浏览器自动打开
 
         安装eslint
@@ -47,8 +48,10 @@
         package.json
         "commitlint": "commitlint --config commitlint.config.cjs -e -V"
 
-        配置husky   
-        npx husky add .husky/commit-msg 
+        pnpm run format
+
+        配置husky
+        npx husky add .husky/commit-msg
 
         #!/usr/bin/env sh
         . "$(dirname -- "$0")/_/husky.sh"
