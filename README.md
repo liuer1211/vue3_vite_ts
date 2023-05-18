@@ -1,4 +1,5 @@
 # Vue 3 + TypeScript + Vite
+
     创建项目
     npm create vite@latest
     启动
@@ -7,13 +8,14 @@
     npm run build
 
 # 基础配置
+
       vite --open  浏览器自动打开
 
       安装eslint
       npm i eslint -D
 
       生成 .eslintrc.cjs
-      npx eslint --init  
+      npx eslint --init
 
       vue3环境代码校验插件
       pnpm install -D eslint-plugin-import eslint-plugin-vue eslint-plugin-node eslint-plugin-prettier eslint-config-prettier eslint-plugin-node @babel/eslint-parser

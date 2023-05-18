@@ -1,11 +1,7 @@
 <template>
-  <div>
-   app
-  </div>
+  <div>app</div>
 </template>
 <script setup lang="ts">
-  var a="123";
+var a = "123";
 </script>
-<style scoped >
-
-</style>
+<style scoped></style>
