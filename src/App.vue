@@ -1,10 +1,14 @@
 <template>
-  <div>
+  <div class="app">
     app
     <SvgIcon></SvgIcon>
   </div>
 </template>
 <script setup lang="ts">
-var a = "123";
+  var a = "123";
 </script>
-<style scoped></style>
+<style lang="scss">
+  .app {
+    color: $color;
+  }
+</style>

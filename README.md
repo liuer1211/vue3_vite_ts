@@ -9,161 +9,297 @@
 
 # 基础配置
 
-        vite --open  浏览器自动打开
+    vite --open  浏览器自动打开
 
-        安装eslint
-        npm i eslint -D
+    安装eslint
+    npm i eslint -D
 
-        生成 .eslintrc.cjs
-        npx eslint --init
+    生成 .eslintrc.cjs
+    npx eslint --init
 
-        vue3环境代码校验插件
-        pnpm install -D eslint-plugin-import eslint-plugin-vue eslint-plugin-node eslint-plugin-prettier eslint-config-prettier eslint-plugin-node @babel/eslint-parser
+    vue3环境代码校验插件
+    pnpm install -D eslint-plugin-import eslint-plugin-vue eslint-plugin-node eslint-plugin-prettier eslint-config-prettier eslint-plugin-node @babel/eslint-parser
 
-        .eslintignore 忽略文件
+    .eslintignore 忽略文件
 
-        package.json新增两个运行脚本
+    package.json新增两个运行脚本
 
-        配置**prettier**
-        pnpm install -D eslint-plugin-prettier prettier eslint-config-prettier
-        .prettierrc.json添加规则
-        .prettierignore忽略文件
+    配置**prettier**
+    pnpm install -D eslint-plugin-prettier prettier eslint-config-prettier
+    .prettierrc.json添加规则
+    .prettierignore忽略文件
 
-        配置stylelint
-        pnpm add sass sass-loader stylelint postcss postcss-scss postcss-html stylelint-config-prettier stylelint-config-recess-order stylelint-config-recommended-scss stylelint-config-standard stylelint-config-standard-vue stylelint-scss stylelint-order stylelint-config-standard-scss -D
+    配置stylelint
+    pnpm add sass sass-loader stylelint postcss postcss-scss postcss-html stylelint-config-prettier stylelint-config-recess-order stylelint-config-recommended-scss stylelint-config-standard stylelint-config-standard-vue stylelint-scss stylelint-order stylelint-config-standard-scss -D
 
-        .stylelintrc.cjs
-        .stylelintignore忽略文件
+    .stylelintrc.cjs
+    .stylelintignore忽略文件
 
-        配置husky
-        pnpm install -D husky
-        执行
-        npx husky-init
+    配置husky
+    pnpm install -D husky
+    执行
+    npx husky-init
 
-        配置commitlint
-        pnpm add @commitlint/config-conventional @commitlint/cli -D
+    配置commitlint
+    pnpm add @commitlint/config-conventional @commitlint/cli -D
 
-        commitlint.config.cjs
+    commitlint.config.cjs
 
-        package.json
-        "commitlint": "commitlint --config commitlint.config.cjs -e -V"
+    package.json
+    "commitlint": "commitlint --config commitlint.config.cjs -e -V"
 
-        pnpm run format
+    pnpm run format
 
-        配置husky
-        npx husky add .husky/commit-msg
+    配置husky
+    npx husky add .husky/commit-msg
 
-        #!/usr/bin/env sh
-        . "$(dirname -- "$0")/_/husky.sh"
-        pnpm commitlint
+    #!/usr/bin/env sh
+    . "$(dirname -- "$0")/_/husky.sh"
+    pnpm commitlint
 
-        git commit -m "fix:xxx"
+    git commit -m "fix:xxx"
 
-        强制使用pnpm包管理器工具
-        在根目录创建`scritps/preinstall.js`文件，添加下面的内容
-        if (!/pnpm/.test(process.env.npm_execpath || '')) {
-            console.warn(
-                `\u001b[33mThis repository must using pnpm as the package manager ` +
-                ` for scripts to work properly.\u001b[39m\n`,
-            )
-            process.exit(1)
-        }
+    强制使用pnpm包管理器工具
+    在根目录创建`scritps/preinstall.js`文件，添加下面的内容
+    if (!/pnpm/.test(process.env.npm_execpath || '')) {
+        console.warn(
+            `\u001b[33mThis repository must using pnpm as the package manager ` +
+            ` for scripts to work properly.\u001b[39m\n`,
+        )
+        process.exit(1)
+    }
 
 # element-plus
 
-        pnpm install element-plus @element-plus/icons-vue
+    pnpm install element-plus @element-plus/icons-vue
 
-        import ElementPlus from 'element-plus';
-        import 'element-plus/dist/index.css'
-        //@ts-ignore忽略当前文件ts类型的检测否则有红色提示(打包会失败)
-        import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
-        app.use(ElementPlus, {
-            locale: zhCn
-        })
+    import ElementPlus from 'element-plus';
+    import 'element-plus/dist/index.css'
+    //@ts-ignore忽略当前文件ts类型的检测否则有红色提示(打包会失败)
+    import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+    app.use(ElementPlus, {
+        locale: zhCn
+    })
 
-        //@ts-ignore 忽略当前文件ts类型的检测否则有红色提示(打包会失败)
-        import zhCn from 'element-plus/dist/locale/zh-cn.mjs' 
+    //@ts-ignore 忽略当前文件ts类型的检测否则有红色提示(打包会失败)
+    import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
-        **Element Plus全局组件类型声明**
-        // tsconfig.json
-        {
-            "compilerOptions": {
-                // ...
-                "types": ["element-plus/global"]
+    **Element Plus全局组件类型声明**
+    // tsconfig.json
+    {
+        "compilerOptions": {
+            // ...
+            "types": ["element-plus/global"]
+        }
+    }
+
+    src别名的配置
+    // vite.config.ts
+    import {defineConfig} from 'vite'
+    import vue from '@vitejs/plugin-vue'
+    import path from 'path'
+    export default defineConfig({
+        plugins: [vue()],
+        resolve: {
+            alias: {
+                "@": path.resolve("./src") // 相对路径别名配置，使用 @ 代替 src
             }
         }
+    })
 
-        src别名的配置
-        // vite.config.ts
-        import {defineConfig} from 'vite'
-        import vue from '@vitejs/plugin-vue'
-        import path from 'path'
-        export default defineConfig({
-            plugins: [vue()],
-            resolve: {
-                alias: {
-                    "@": path.resolve("./src") // 相对路径别名配置，使用 @ 代替 src
-                }
-            }
-        })
-
-        TypeScript 编译配置
-        // tsconfig.json
-        {
-            "compilerOptions": {
-                "baseUrl": "./", // 解析非相对模块的基地址，默认是当前目录
-                "paths": { //路径映射，相对于baseUrl
-                "@/*": ["src/*"] 
-                }
+    TypeScript 编译配置
+    // tsconfig.json
+    {
+        "compilerOptions": {
+            "baseUrl": "./", // 解析非相对模块的基地址，默认是当前目录
+            "paths": { //路径映射，相对于baseUrl
+            "@/*": ["src/*"]
             }
         }
+    }
 
-        环境变量的配置
-        .env.development
-        .env.development
-        .env.test
+    环境变量的配置
+    .env.development
+    .env.development
+    .env.test
 
-        "dev": "vite --open",
-        "build:test": "vue-tsc && vite build --mode test",
-        "build:pro": "vue-tsc && vite build --mode production",
-        "build": "vue-tsc --noEmit && vite build",
-        "preview": "vite preview",
+    "dev": "vite --open",
+    "build:test": "vue-tsc && vite build --mode test",
+    "build:pro": "vue-tsc && vite build --mode production",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
 
-        SVG图标配置
-        pnpm install vite-plugin-svg-icons -D
+    SVG图标配置
+    pnpm install vite-plugin-svg-icons -D
 
-        import {defineConfig} from 'vite'
-        import vue from '@vitejs/plugin-vue'
-        import path from 'path'
-        import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-        export default defineConfig({
-            plugins: [
-            vue(),
-            createSvgIconsPlugin({
-                // Specify the icon folder to be cached
-                iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-                // Specify symbolId format
-                symbolId: 'icon-[dir]-[name]',
-            }),
-            ],
-            resolve: {
-                alias: {
-                    "@": path.resolve("./src") // 相对路径别名配置，使用 @ 代替 src
-                }
+    import {defineConfig} from 'vite'
+    import vue from '@vitejs/plugin-vue'
+    import path from 'path'
+    import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+    export default defineConfig({
+        plugins: [
+        vue(),
+        createSvgIconsPlugin({
+            // Specify the icon folder to be cached
+            iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
+            // Specify symbolId format
+            symbolId: 'icon-[dir]-[name]',
+        }),
+        ],
+        resolve: {
+            alias: {
+                "@": path.resolve("./src") // 相对路径别名配置，使用 @ 代替 src
             }
+        }
+    })
+
+    **入口文件导入**
+    import 'virtual:svg-icons-register'
+
+    src/assets/icons
+
+    局部组件
+    SvgIcon/index.vue
+
+    全局组件
+    先 app.use()
+    再 install()
+
+
+    集成sass
+        全局变量
+        在style/variable.scss创建一个variable.scss文件！
+        配置
+        css: {
+            preprocessorOptions: {
+            scss: {
+                javascriptEnabled: true,
+                additionalData: '@import "./src/styles/variable.scss";',
+            },
+            },
+        },
+
+    mock数据
+
+        pnpm install -D vite-plugin-mock mockjs
+
+        vite.config.js 配置
+        import { UserConfigExport, ConfigEnv } from 'vite'
+        import { viteMockServe } from 'vite-plugin-mock'
+        import vue from '@vitejs/plugin-vue'
+        export default ({ command })=> {
+            return {
+                plugins: [
+                vue(),
+                viteMockServe({
+                    localEnabled: command === 'serve',
+                }),
+                ],
+            }
+        }
+        在mock文件夹内部创建一个user.ts文件
+        //用户信息数据
+        function createUserList() {
+            return [
+                {
+                    userId: 1,
+                    avatar:
+                        'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+                    username: 'admin',
+                    password: '111111',
+                    desc: '平台管理员',
+                    roles: ['平台管理员'],
+                    buttons: ['cuser.detail'],
+                    routes: ['home'],
+                    token: 'Admin Token',
+                },
+                {
+                    userId: 2,
+                    avatar:
+                        'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+                    username: 'system',
+                    password: '111111',
+                    desc: '系统管理员',
+                    roles: ['系统管理员'],
+                    buttons: ['cuser.detail', 'cuser.user'],
+                    routes: ['home'],
+                    token: 'System Token',
+                },
+            ]
+        }
+        
+
+        axios
+        pnpm install axios
+
+        utils/request.ts
+
+        import axios from "axios";
+        import { ElMessage } from "element-plus";
+        //创建axios实例
+        let request = axios.create({
+            baseURL: import.meta.env.VITE_APP_BASE_API,
+            timeout: 5000
         })
+        //请求拦截器
+        request.interceptors.request.use(config => {
+            return config;
+        });
+        //响应拦截器
+        request.interceptors.response.use((response) => {
+            return response.data;
+        }, (error) => {
+            //处理网络错误
+            let msg = '';
+            let status = error.response.status;
+            switch (status) {
+                case 401:
+                    msg = "token过期";
+                    break;
+                case 403:
+                    msg = '无权访问';
+                    break;
+                case 404:
+                    msg = "请求地址错误";
+                    break;
+                case 500:
+                    msg = "服务器出现问题";
+                    break;
+                default:
+                    msg = "无网络";
 
-        **入口文件导入**
-        import 'virtual:svg-icons-register'
+            }
+            ElMessage({
+                type: 'error',
+                message: msg
+            })
+            return Promise.reject(error);
+        });
+        export default request;
 
-        src/assets/icons
+        在src目录下去创建api文件夹去统一管理项目的接口
+        //统一管理咱们项目用户相关的接口
+        import request from '@/utils/request'
+        import type {
+        loginFormData,
+        loginResponseData,
+        userInfoReponseData,
+        } from './type'
 
-        局部组件
-        SvgIcon/index.vue
+        //项目用户相关的请求地址
+        enum API {
+            LOGIN_URL = '/admin/acl/index/login',
+            USERINFO_URL = '/admin/acl/index/info',
+            LOGOUT_URL = '/admin/acl/index/logout',
+        }
+        //登录接口
+        export const reqLogin = (data: loginFormData) =>
+        request.post<any, loginResponseData>(API.LOGIN_URL, data)
+        //获取用户信息
+        export const reqUserInfo = () =>
+        request.get<any, userInfoReponseData>(API.USERINFO_URL)
+        //退出登录
+        export const reqLogout = () => request.post<any, any>(API.LOGOUT_URL)
 
-        全局组件
-        先 app.use
-        再 install()
-
-
-        集成sass
+# 路由
+    pnpm install vue-router
