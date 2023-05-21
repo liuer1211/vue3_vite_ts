@@ -119,7 +119,5 @@
 # vue-router
       yarn add vue-router@4
 
-
-# svg
-      yarn add vite-plugin-svg-icons -D
+ 
 

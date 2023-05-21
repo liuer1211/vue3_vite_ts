@@ -1,6 +1,6 @@
 const routes = [
   {
-    path: "/login",
+    path: "/",
     component: () => import("../views/login/index.vue"),
     name: "login",
   },
@@ -9,11 +9,11 @@ const routes = [
     component: () => import("../views/404.vue"),
     name: "404",
   },
-  {
-    path: "/:pathMatch(.*)*",
-    redirect: "/404",
-    name: "Any",
-  },
+  // {
+  //   path: "/:pathMatch(.*)*",
+  //   redirect: "/404",
+  //   name: "Any",
+  // },
 ];
 
 export default routes;
