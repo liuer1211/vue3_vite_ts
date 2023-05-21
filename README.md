@@ -54,6 +54,7 @@
       "build:pro": "vue-tsc && vite build --mode production",
 
 # sass
+
       在src/styles目录下创建一个index.scss reset.scss variable.scss文件
       main.ts 引入 import "@/styles/index.scss";
       在vite.config.ts文件配置如下:
@@ -117,7 +118,5 @@
             }
 
 # vue-router
+
       yarn add vue-router@4
-
- 
-
