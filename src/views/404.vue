@@ -1,12 +1,12 @@
 <template>
   <div class="app">
-    <router-view></router-view>
+    qwe
   </div>
 </template>
 
 <script setup lang="ts"></script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .app {
   color: $color;
 }
