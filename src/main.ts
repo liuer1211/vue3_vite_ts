@@ -10,9 +10,12 @@ import zhCn from "element-plus/dist/locale/zh-cn.mjs";
 
 import router from "./router/index";
 
+import pinia from "./store/index";
+
 const app = createApp(App);
 app.use(ElementPlus, {
   locale: zhCn,
 });
+app.use(pinia);
 app.use(router);
 app.mount("#app");

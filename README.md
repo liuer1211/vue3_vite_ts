@@ -120,3 +120,11 @@
 # vue-router
 
       yarn add vue-router@4
+
+# pinia
+
+      yarn add pinia
+
+# axios
+
+      yarn add axios
