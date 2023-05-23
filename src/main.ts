@@ -19,3 +19,7 @@ app.use(ElementPlus, {
 app.use(pinia);
 app.use(router);
 app.mount("#app");
+
+// 046
+// 数据大屏独立展示
+// 路由组件 留坑 加入插槽
