@@ -128,3 +128,7 @@
 # axios
 
       yarn add axios
+
+# echarts
+
+      
