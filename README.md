@@ -130,7 +130,8 @@
       yarn add axios
 
 # echarts
-
+      水球图  地图  折线图
+      yarn add echarts echarts-liquidfill
 
 # 路由鉴权
       1.登录 不能再跳转登录
